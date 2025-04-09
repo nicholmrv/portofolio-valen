@@ -1,0 +1,159 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Visit Tokyo</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-image: url('background.jpg');
+      background-size: cover;
+      background-position: center;
+      color: white;
+    }
+    .overlay {
+      background: rgba(0, 0, 0, 0.6);
+      padding: 40px;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      padding: 15px;
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(5px);
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 18px;
+    }
+    nav a.active {
+      color: red;
+    }
+    h1 {
+      color: red;
+      font-size: 48px;
+      margin: 0;
+    }
+    h2 {
+      font-size: 40px;
+      margin: 0;
+    }
+    .content {
+      max-width: 600px;
+      margin-top: 20px;
+    }
+    .rating {
+      display: flex;
+      align-items: center;
+      margin-top: 20px;
+    }
+    .star {
+      font-size: 30px;
+      color: yellow;
+      margin-right: 10px;
+    }
+    .images {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 10px;
+      margin-top: 30px;
+    }
+    .images img {
+      width: 100%;
+      border-radius: 10px;
+      object-fit: cover;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .images img:hover {
+      transform: scale(1.05);
+    }
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+    .modal-content {
+      background-color: #222;
+      margin: 15% auto;
+      padding: 20px;
+      border-radius: 10px;
+      width: 80%;
+      max-width: 400px;
+      text-align: center;
+      color: white;
+    }
+    .close {
+      color: red;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay">
+    <nav>
+      <a href="#">Islands</a>
+      <a href="#">Beach</a>
+      <a href="#" class="active">City's</a>
+      <a href="#">Hotel's</a>
+    </nav><h1>VISIT</h1>
+<h2>TOKYO</h2>
+<div class="content">
+  <p>
+    Tokyo, officially Tokyo Metropolis, is one of Japan's 47 prefectures and has been the capital of Japan since 1869. To this day, Greater Tokyo is ranked as the most populous metropolitan area in the world. Tokyo is the seat of the Emperor of Japan, the Japanese government.
+  </p>
+
+  <div class="rating">
+    <div class="star">★</div>
+    <div>RATING<br><strong>9.5/10</strong></div>
+  </div>
+</div>
+
+<div class="images">
+  <img src="tokyo1.jpg" alt="Tokyo Temple" data-info="This is Senso-ji, Tokyo's oldest and most significant temple." />
+  <img src="tokyo2.jpg" alt="Tokyo Castle" data-info="A famous historical castle surrounded by gardens." />
+  <img src="tokyo3.jpg" alt="Tokyo Nightlife" data-info="The vibrant Shibuya district full of lights and energy." />
+  <img src="tokyo4.jpg" alt="Tokyo Shrine" data-info="A peaceful shrine located in the heart of nature." />
+  <img src="tokyo5.jpg" alt="Tokyo Architecture" data-info="Beautiful traditional Japanese architecture." />
+</div>
+
+  </div>  <!-- Modal Popup -->  <div id="imageModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <p id="modalText"></p>
+    </div>
+  </div>  <script>
+    const images = document.querySelectorAll('.images img');
+    const modal = document.getElementById('imageModal');
+    const modalText = document.getElementById('modalText');
+
+    images.forEach(img => {
+      img.addEventListener('click', () => {
+        modalText.textContent = img.getAttribute('data-info');
+        modal.style.display = 'block';
+      });
+    });
+
+    function closeModal() {
+      modal.style.display = 'none';
+    }
+
+    window.onclick = function(event) {
+      if (event.target === modal) {
+        closeModal();
+      }
+    }
+  </script></body>
+</html>
